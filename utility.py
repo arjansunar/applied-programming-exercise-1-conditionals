@@ -37,23 +37,34 @@ def get_greatest_among_two_digits(a,b):
     return a if a > b else b
 
 def is_leap_year(year):
-    pass
+    if (year % 400 == 0): 
+        return True
+    elif (year % 100 == 0): 
+        return False
+    elif (year % 4 == 0):
+        return True
+    else: return False 
 
 # the date is assummed to have the format of yyyy-mm-dd
 def is_correct_date(date):
     [year,month ,day] = map(lambda x: int(x),date.split('-'))
-    return (year > 0 ) & ((month > 0) & (month <=12)) & (( day> 0) & (day <= 365))
+    return (year > 0 ) & ((month > 0) & (month <=12)) & (( day> 0) & (day <= 32))
 
 
 # the date is assummed to have the format of yyyy-mm-dd
 def is_eligible_for_vote(dob,current_year= 2021):
-    year = dob.split('-')[0]
+    year = int(dob.split('-')[0])
     return (current_year - year) >= 18 
 
 
-print(f'greatest: {get_greatest(7,10,9)}')
-print(f'is positive: {is_positive(0)}')
-print(f'is vowel: {is_vowel("b")}')
-print(f'is alphabet: {is_alphabet("*")}')
-print(f'is uppercase | lowercase | digit | special chars:  {is_uppercase_or_lowercase_or_specialchar_or_digit("*")}')
-print(f'is correct date: {is_correct_date("2020-13-10")}')
+def main():
+    print(f'greatest: {get_greatest(7,10,9)}')
+    print(f'is positive: {is_positive(0)}')
+    print(f'is vowel: {is_vowel("b")}')
+    print(f'is alphabet: {is_alphabet("*")}')
+    print(f'is uppercase | lowercase | digit | special chars:  {is_uppercase_or_lowercase_or_specialchar_or_digit("*")}')
+    print(f'is correct date: {is_correct_date("2020-13-10")}')
+    print(f'is leap year: {is_leap_year(2012)}')
+
+if __name__ == "__main__":
+    main()
